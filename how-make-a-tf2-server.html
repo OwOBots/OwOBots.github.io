@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>tf2 server setup</title>
+</head>
+<body>
+    <h1>a basic tf2 server setup guide</h1>
+    <strong>step 1</strong>
+    <p>Buy a vps</p>
+    <p>you can use <a href="linode.com">linode</a> if you want</p>
+    <p> harden your server by following <a href="https://www.linode.com/docs/guides/securing-your-server/">this guide</a></p>
+    <p>open the ports 27015 and 27005</p>
+    <p>install the following packages</p>
+    <p>on arch run <strong>pacman -Syy tmux nano</strong> and <a href="https://wiki.archlinux.org/title/Official_repositories#Enabling_multilib">enable mutilib</a></p>
+    <p>on ubuntu run <strong>sudo apt update && sudo apt install tmux</strong></p>
+    <P> somewhat optional <a href="https://steamcommunity.com/dev/managegameservers">get a gsid</a> for persistance  </P>
+    <strong>step 2</strong>
+    <p><a href="https://developer.valvesoftware.com/wiki/SteamCMD">install steamcmd</a></p>
+    <p>on arch run <strong>pacman -Syy lib32-gcc-libs lib32-libcurl-gnutls</strong></p>
+    <p>on ubuntu run <strong>sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc-s1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386 libsdl2-2.0-0:i386 </strong></p>
+    
+    
+    <strong>step 3</strong>
+    <p>make a folder called tf2_server</p>
+    <p>run <strong>nano tf2_ds.txt</strong></p>
+    <p>paste this in</p>
+    <pre>
+        login anonymous
+        force_install_dir ./tf2_server
+        app_update 232250 validate
+        quit
+    </pre>
+    <p>run <strong>steamcmd +runscript tf2_ds.txt</strong></p>
+    <strong>step 4</strong>
+    <p>install <a href="https://www.sourcemod.net/">sourcemod </a>  and <a href="https://www.metamodsource.net/">metamod</a></p>
+    <p>download the latest version of sourcemod and metamod</p>
+    <p>extract the files to the tf2_server folder</p>
+    <p>do <strong>cd tf2_server/tf/addons/sourcemod/configs/</strong></p>
+    <p>run <strong>nano admins_simple.ini</strong></p>
+    <p>paste this in</p>
+    <pre>
+        "YOUR_STEAM_ID" "99:z"
+    </pre>
+    <p>use a website to find your steamid</p>
+    <p>run <strong>cd ../../../</strong></p>
+    <p>run <strong>find maps/ -type f -name "*.bsp*" | sed 's!.*/!!' | sed 's!.bsp!!' | tee maplist.txt mapcycle.txt</strong></p>
+    <p>run <strong>mv maplist.txt cfg/</strong></p>
+    <p>run <strong>mv mapcycle.txt cfg/</strong></p>
+    <p>run <strong>cd cfg/</strong></p>
+    <p>run <strong>nano mapcycle.txt</strong></p>
+    <p>remove any maps that has mvm_ in front</p>
+    <p>run <strong>nano maplist.txt</strong></p>
+    <p>do the same thing as mapcycle.txt</p>
+    <p>use a <a href="https://avi12.com/tf2-server-cfg-generator"> server.cfg generator</a></p>
+    <p>paste the generated server.cfg in the cfg folder</p>
+    <p>run <strong>nano server.cfg</strong> and change <strong>sv_disable_respawn_times</strong> to <strong>mp_disable_respawn_times</strong> </p>
+    <strong>step 5</strong>
+    <p>test your server first before you do anything else by running <strong>./tf2_server/srcds_run -game tf +map ctf_2fort +maxplayers 24</strong> if it works then you can move on</p>
+    <p>make a file called run_server.sh</p>
+    <p>paste this in</p>
+    <pre>
+        ./tf2_server/srcds_run -game tf +map ctf_2fort +maxplayers 24 +sv_setsteamaccount [TOKEN]
+    </pre>
+    <p>run <strong>chmod +x run_server.sh</strong></p>
+    <p>run <strong>./run_server.sh</strong></p>
+
+    <strong>Installing plugins </strong>
+    <p> <strong>NOTE:</strong> some plugins are drag and drop so <strong>READ THE README</strong> before you do this</p>
+    <p>download the plugin you want</p>
+    <p>extract the files to the tf2_server/addons/sourcemod/plugins folder</p>
+    <p>restart the server</p>
+
+
+
+    <strong>Recommended plugins</strong>
+    <p> <a href="https://github.com/sapphonie/StAC-tf2">StAC</a> - a anticheat</p>
+    <p> <a href="https://forums.alliedmods.net/showthread.php?t=161586">Basic Votekick Immunity</a> - Makes admins Immune to Votekicks</p>
+    <p> <a href="https://github.com/rafradek/sigsegv-mvm/releases">rafradek's srcds optimizer</a> - dramatically reduces the CPU usage of the server</p>
+    
+</body>
+</html>
