@@ -3,8 +3,8 @@
 /* General styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #000000;
+    color: #000000;
     margin: 0;
     padding: 0;
 }
@@ -42,14 +42,15 @@ a:hover {
 
 /* Preformatted text */
 pre {
-    background-color: #eee;
+    background-color: #000000;
+    color: #fff;
     padding: 10px;
     border: 1px solid #ccc;
     overflow-x: auto;
 }
 
 /* Container styles */
-#steamcmd, #SRCDS {
+#steamcmd, #SRCDS, #sm_plugins,#tmux_detach {
     background-color: #fff;
     padding: 20px;
     margin: 20px auto;
@@ -58,4 +59,4 @@ pre {
     max-width: 800px;
 }
 
-/* Form styles */
+
