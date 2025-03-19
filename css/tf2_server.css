@@ -1,8 +1,16 @@
 /* tf2.css */
 
+/* font face */
+@font-face {
+    font-family: "dos-v_re_jpn16";
+    src: url("../assets/Web437_DOS-V_re_JPN16.woff") format("woff2");
+    font-display: auto;
+  }
+
+
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "dos-v_re_jpn16", sans-serif;
     background-color: #000000;
     color: #000000;
     margin: 0;
@@ -50,7 +58,7 @@ pre {
 }
 
 /* Container styles */
-#steamcmd, #SRCDS, #sm_plugins,#tmux_detach {
+#steamcmd, #SRCDS, #sm_plugins,#tmux_detach,#plugin_install,#req {
     background-color: #fff;
     padding: 20px;
     margin: 20px auto;

@@ -8,7 +8,14 @@
 <body>
     <div id="steamcmd">
         <h1 class="title">yet another basic tf2 server setup guide</h1>
-        <p>Buy a vps, i recommend <a href="https://www.linode.com/">linode</a></p>
+        <div id="req">        <h1>Requirements</h1>
+                <p>a vps with at least 15-20 GB of diskspace, 2 cores and 2GB of ram, i recommend <a href="https://www.linode.com/">linode</a></p>
+                <p>some linux knowledge</p>
+        </div>
+
+
+        <h1>Setting up the server</h1>
+
         <p> harden your server by following <a href="https://www.linode.com/docs/guides/securing-your-server/">this guide</a>, then do <code>
 sudo ufw allow 27015/tcp sudo ufw allow 27015/udp</code>
 
@@ -23,6 +30,7 @@ sudo ufw allow 27015/tcp sudo ufw allow 27015/udp</code>
 </code></p>
     </div>
     <div id="SRCDS">
+        <h1>Installing the server</h1>
         <p>make a folder called tf2_server</p>
         <p>run <code>nano tf2_ds.txt</code></p>
         <p>paste this in</p>
@@ -37,8 +45,9 @@ quit
         <p>run <code>
 steamcmd +runscript tf2_ds.txt
         </code></p>
-        <p>install <a href="https://www.sourcemod.net/">sourcemod </a>  and <a href="https://www.metamodsource.net/">metamod</a></p>
-        <p>download the latest version of sourcemod and metamod</p>
+        <p> if it errors out just run it again</p>
+        <h1>Setting up the server + installing sourcemod and metamod</h1>
+        <p>download <a href="https://www.sourcemod.net/">sourcemod </a>  and <a href="https://www.metamodsource.net/">metamod</a></p>
         <p>extract the files to the tf2_server folder</p>
         <p>do <code>cd tf2_server/tf/addons/sourcemod/configs/</code></p>
         <p>run <code>nano admins_simple.ini</code></p>
@@ -47,6 +56,7 @@ steamcmd +runscript tf2_ds.txt
 "YOUR_STEAM_ID" "99:z"
         </code>
         <p>use a website to find your steamid</p>
+        <p>run <code>cd ../../../</code></p>
         <p>run <code>
 cd tf2_server/tf/cfg/
         </code></p>
@@ -115,6 +125,7 @@ koth_badlands
         <p>use a <a href="https://avi12.com/tf2-server-cfg-generator"> server.cfg generator</a></p>
         <p>paste the generated server.cfg in the cfg folder</p>
         <p>run <code>nano server.cfg</code> and change <code>sv_disable_respawn_times</code> to <code>mp_disable_respawn_times</code> </p>
+        <p>run <code>cd ../../..</code></p>
         <p>test your server first before you do anything else by running <code>./tf2_server/srcds_run -game tf +map ctf_2fort +maxplayers 24</code> if it works then you can move on</p>
         <p>make a file called run_server.sh</p>
         <p>paste this in</p>
@@ -123,23 +134,24 @@ koth_badlands
         </code>
         <p>run <code>chmod +x run_server.sh</code></p>
         <p>run <code>tmux</code></p>
-        <p>run <code>./run_server.sh</code></p>
-    
-        <strong>Installing plugins </strong>
-        <p> <strong>NOTE:</strong> some plugins are drag and drop so <strong>READ THE README</strong> before you do this</p>
-        <p>download the plugin you want</p>
-        <p>extract the files to the <code>tf2_server/addons/sourcemod/plugins</code> folder</p>
-        <p>restart the server</p>    
+        <p>run <code>./run_server.sh</code></p> 
     </div>
  
+    <div id="plugin_install">        
+        <h1>Installing plugins </h1>
+                <p> <strong>NOTE:</strong> some plugins are drag and drop so <strong>READ THE README</strong> before you do this</p>
+                <p>download the plugin you want</p>
+                <p>extract the files to the <code>tf2_server/addons/sourcemod/plugins</code> folder</p>
+                <p>restart the server</p>
+        </div>  
     <div id="tmux_detach">
-        <h2>how to detach from tmux and come back</h2>
+        <h1>how to detach from tmux and come back</h1>
         <p>press ctrl+b then d to detach</p>
         <p>run <code>tmux attach</code> to come back</p>
     </div>
 
 <div id="sm_plugins" class="plugins">
-    <strong>Recommended plugins</strong>
+    <h1>Recommended plugins</h1>
     <p> <a href="https://github.com/sapphonie/StAC-tf2">StAC</a> - a anticheat</p>
     <p> <a href="https://forums.alliedmods.net/showthread.php?t=161586">Basic Votekick Immunity</a> - Makes admins Immune to Votekicks</p>
     <p> <a href="https://github.com/rafradek/sigsegv-mvm/releases">rafradek's srcds optimizer</a> - dramatically reduces the CPU usage of the server</p>
