@@ -1,0 +1,59 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* font face */
+@font-face {
+    font-family: "dos-v_re_jpn16";
+    src: url("../assets/Web437_DOS-V_re_JPN16.woff") format("woff2");
+    font-display: auto;
+  }
+
+/* Global styles */
+body {
+    font-family: "dos-v_re_jpn16", sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+/* Header styles */
+.title {
+    text-align: center;
+    font:  sans-serif;
+    margin-top: 20px;
+}
+
+.title_rules {
+    margin-top: 20px;
+    font-size: 50px;
+    color: #ff0000;
+}
+
+.rules
+{
+    font-size: 60px;
+    color: #ffffff;
+}
